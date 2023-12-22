@@ -1,0 +1,28 @@
+Intuition: assume first element is majority element. then check if upcoming element is same as current element increase the count or else decrease. 
+           if c become neutral means c=0, set new majority element. res=i; and repeat.
+
+
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums){
+        int n=nums.size(),c=1,res=0;
+        for(int i=1; i<n; i++){
+            if(nums[res]==nums[i]){
+                c++;
+            }else{
+                c--;
+            }
+            if(c==0){
+                c=1;
+                res=i;
+            }
+        }
+        c=0;
+        for(int i=0; i<n; i++){
+            if(nums[res]==nums[i])c++;
+        }
+        if(c>=n/2)return nums[res];
+        return -1;
+    }
+};
