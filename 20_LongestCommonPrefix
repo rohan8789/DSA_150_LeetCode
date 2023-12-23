@@ -1,3 +1,29 @@
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+
+Input: strs = ["dog","racecar","car"]
+Output: ""
+
+
+strs = ["a"]
+Output: "a"
+Expected: "a"
+
+
+strs = ["reflower","flow","flight"]
+Output: ""
+Expected: ""
+
+
+strs = ["acc","aaa","aaba"]
+Output: "a"
+Expected: "a"
+
+
+
+
+
 class Solution {
 public:
 
