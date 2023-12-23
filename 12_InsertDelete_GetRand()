@@ -1,0 +1,44 @@
+class RandomizedSet {
+    vector<int>v;
+public:
+    RandomizedSet() {
+        
+    }
+    
+    bool insert(int val) {
+        for(int i=0; i<v.size(); i++){
+            if(v[i]==val)return false;
+        }
+        v.push_back(val);
+        return true;
+    }
+    
+    bool remove(int val) {
+        int f=0,x=0;
+        for(int i=0; i<v.size(); i++){
+            if(val==v[i]){
+                f=1;
+                x=i;
+                break;
+            }
+        }
+        if(f==0)return false;
+        for(int i=x; i<v.size()-1; i++){
+            v[i]=v[i+1];
+        }
+        v.pop_back();
+        return true;
+    }
+    
+    int getRandom() {
+        return v[rand()%v.size()];
+    }
+};
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet* obj = new RandomizedSet();
+ * bool param_1 = obj->insert(val);
+ * bool param_2 = obj->remove(val);
+ * int param_3 = obj->getRandom();
+ */
