@@ -1,0 +1,41 @@
+brute force
+
+class Solution {
+public:
+    int hIndex(vector<int>& citations) {
+        int n=citations.size(), ans=0,c;
+        sort(citations.begin(), citations.end());
+        for(int i=n-1; i>=0; --i){
+            int x=i+1,c=0;
+            for(int j=0; j<n; j++){
+                if(x<=citations[j]){
+                    c++;
+                }
+            }
+            if(x<=c){
+                ans=max(ans,x);
+            }
+        }
+        return ans;
+    }
+};
+
+
+
+//optimized
+class Solution {
+public:
+    int hIndex(vector<int>& citations) {
+        int n=citations.size(), ans=0,c;
+        sort(citations.begin(), citations.end());
+        int h=n;
+        for(int i=0; i<n; ++i){
+            if(citations[i]>=h){
+                return h;
+            }else{
+                h=h-1;
+            }
+        }
+        return h;
+    }
+};
