@@ -1,1 +1,27 @@
-
+class Solution {
+public:
+    string intToRoman(int num) {
+        string ones[9]={"I","II","III","IV","V","VI","VII","VIII","IX"};
+        string tens[9]={"X","XX","XXX","XL","L","LX","LXX", "LXXX","XC"};
+        string hndrds[9]={"C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+        string thsnd[3]={"M","MM","MMM"};
+        // cout<<ones[2]<<endl;
+        string s1="";
+        if(num>=1000){
+            s1=s1+thsnd[(num/1000)-1];
+            num=num%1000;
+        }
+        if(num>=100){
+            s1=s1+hndrds[(num/100)-1];
+            num=num%100;
+        }
+        if(num>=10){
+            s1=s1+tens[(num/10)-1];
+            num=num%10;
+        }
+        if(num>0){
+            s1=s1+ones[num-1];
+        }
+        return s1;
+    }
+};
