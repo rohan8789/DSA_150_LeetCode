@@ -1,0 +1,55 @@
+Example 1:
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+
+Example 2:
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+
+Example 3:
+Input: s = " "
+Output: true
+Explanation: s is an empty string "" after removing non-alphanumeric characters.
+
+s="1a2"
+Output: false
+Expected: false
+
+
+
+
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int l=0,h=s.length()-1;
+        while(l<=h){
+            if(s[h]>=97 && s[h]<=122){
+                s[h]=s[h]-32;
+            }
+            if(s[l]>=97 && s[l]<=122){
+                s[l]=s[l]-32;
+            }
+            if(s[l]<65||s[l]>90||s[l]==' '){
+                if(s[l]<48 || s[l]>57){
+                    l++;continue;
+                }
+            }
+            if(s[h]<65||s[h]>90||s[h]==' '){
+                if(s[h]<48 || s[h]>57){
+                    h--;continue;
+                }
+            }
+            if(s[l]!=s[h]){
+                cout<<s[l]<<" "<<s[h]<<endl;
+                return false;
+            }else{
+                cout<<s[l]<<" "<<s[h]<<endl;
+                l++;h--;
+            }
+        }
+        return true;
+    }
+};
